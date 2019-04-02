@@ -25,6 +25,23 @@ this.perimeter = function() {
 
 }
 
+$width.keypress(function(e){
+  if(/[abcdf-zABCDF-Z`~!@#$%^&*()=_+[\]{}|;:'",<>/?\\]/.test(e.key)){
+    e.preventDefault();
+  }
+  
+  if(e.key==='.'){
+    if(e.target.value === '') e.preventDefault();
+
+    if(e.target.value.indexOf('.') !== -1){
+      e.preventDefault();
+    }else{
+      if(e.target.selectionStart === 0) e.preventDefault();
+    }
+  }
+});
+
+
 $width.focusout(function(){
   var w = $width.val();
    if(w === ''){
@@ -35,10 +52,10 @@ $width.focusout(function(){
    }
 
    if(Number(w)<0){
-     $widthValidation.html('宽度不能为空');
+     $widthValidation.html('宽度不能为负');
      $width.select();
    }else{
-     $heightValidation.html('高度不能为空');
+     $heightValidation.html('高度不能为负');
    }
 
 });
@@ -53,10 +70,10 @@ $height.focusout(function(){
   }
 
  if(Number(w)<0){
-     $heightValidation.html('高度不能为空');
+     $heightValidation.html('高度不能为负');
      $height.select();
  }else{
-   $heightValidation.html('');
+   $heightValidation.html('高度不能为负');
  }
 })
 

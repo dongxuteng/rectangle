@@ -39,3 +39,19 @@ span {
   top:100px;
 }
 
+input:valid+span:after{
+  content:'✔'
+  color:green
+}
+
+input:invalid+span:after{
+  content:'×';
+  color:red;
+}
+
+
+
+
+
+
+
